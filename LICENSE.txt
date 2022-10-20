@@ -1,0 +1,23 @@
+## Terms of use:
+# This file is part of the project "project_manager".
+# You can use this file under the terms of the MIT License
+# (https://opensource.org/licenses/MIT).
+# Copyright (c) 2022 by DoiT Medien Gruppe & Slush.
+# You should have received a copy of the MIT License
+# along with this file.project_todo
+# If not, see <https://opensource.org/licenses/MIT>.
+## Terms of Service:
+# You are not allowed to use this file without the permission of the author.
+# You are not allowed to copy or modify this file.
+# You are not allowed to use this file for commercial purposes.
+# You are not allowed to publish this file or share it with others.
+# You are not allowed to use this file in any kind of project.
+## Support:
+# You can find the author by sending an email to:
+# dev@kitsune.exposed
+## License:
+# This file is licensed under the MIT License.
+# You can find a copy of the license in the LICENSE file.
+## Changelog:
+# 0.0.1:
+# - Initial release.

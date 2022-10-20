@@ -1,0 +1,35 @@
+<?php
+error_reporting(E_ALL);
+try {
+    foreach ($fetch_todos as $key) {
+        echo "<tr>";
+        ?>
+        <td><?= $key['todo_name'] ?>
+        </td>
+
+        <!--<td>
+            <?= null #$key['todo_description']                     ?>
+        </td>-->
+        <td>
+            <div class='progressbar'>
+                <div class='bar' style='width:<?= $key['todo_progress'] ?>%'><?= $key['todo_progress'] ?>%
+                </div>
+            </div>
+        </td>
+        <td>
+            <a href="edit.php?edit=todo&id=<?= $key['id'] ?>&project_id=<?= $key['project_id'] ?>&todo_progress=<?= $key['todo_progress'] ?>&todo_name=<?= $key['todo_name'] ?>">
+                <button class='btn-edit'
+                        style="background-color: #1d1e21; color: #e8eaed;border:none; font-size: larger;font-weight: bolder;text-align: center">
+                    Bearbeiten
+                </button>
+        </td>
+        <?php
+        echo "</tr>";
+    }
+    ?>
+    <p style="background:rgba(110,110,124,0.43); max-width:80%;max-height:5rem;min-height:5rem;padding-left:40%;cursor:pointer;"
+       onclick="location.href='add.php?add=todo'" title="AddCreate Project">Add ToDo</p>
+    <?php
+} catch (Exception $e) {
+    echo "<h1 class='errorbar'>Ooops. There was an error :/<br>" . $e->getMessage() . "</h1>";
+}

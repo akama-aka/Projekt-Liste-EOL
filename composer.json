@@ -1,0 +1,12 @@
+{
+  "name": "projekt-liste/list",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Slush"
+    }
+  ],
+  "require": {
+    "sentry/sdk": "^3.1"
+  }
+}

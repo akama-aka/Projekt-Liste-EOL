@@ -1,0 +1,81 @@
+<?php
+error_reporting(E_ALL);
+try {
+    $zeahler = 0;
+    foreach ($fetch_projects as $key) {
+
+        /*
+         *                      #################################
+         *                     ## HOLE ALLE DATEN DIE 100 SIND ##
+         *                     ##################################
+         */
+        #$prozent_query = "SELECT todo_progress FROM projects.project_todo WHERE project_id like '" . $key['id'] . "' AND todo_progress = 100";
+        $prozent_query = "SELECT todo_progress FROM projects.project_todo WHERE todo_progress=100 AND project_id='" . $key['id'] . "'";
+        $prozent_stmt = $conn->query($prozent_query);
+        $prozent_result = $prozent_stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($prozent_result)) {
+            $zeahler++;
+        }
+        #echo "<br>";
+        #print_r($prozent_result);
+        #echo "<br>";
+        if ($prozent_result > 0) {
+            $counter = count($prozent_result);
+        } else {
+            $counter = 0;
+        }
+        #echo "<br>";
+        /*
+         *                     #######################################
+         *                    ## HOLE ALLE DATEN VON DER TODO LIST  ##
+         *                    ########################################
+         *
+         */
+        $todo_query = "SELECT id FROM projects.project_todo WHERE project_id = '" . $key['id'] . "'";
+        $todo_query = $conn->query($todo_query);
+        $executor = $todo_query->fetchAll();
+        $executor = count($executor);
+        if (!$executor | empty($executor)) {
+            $prozent = 0;
+            $berechnung = 0;
+        } else {
+            $berechnung = round(($counter / $executor) * 100);
+        }
+        /*
+         *                   #######################################
+         *                   ## SETZE DEN STANDARD WERT DER DATEN ##
+         *                  ########################################
+         *
+         */
+
+        $sum = 0;
+        $sum_todos = 0;
+        echo($sum);
+        if (empty($prozent_result)) {
+            $sum = 0;
+        } elseif ($sum > 100) {
+            $sum = 100;
+        }
+        var_dump($sum);
+        echo "<tr>";
+        ?>
+        <td><a href="?project=<?= $key['id'] ?>">
+                <?= $key['project_name'] ?>
+            </a>
+        </td>
+        <td>
+            <div class='progressbar'>
+                <div class='bar' style='width:<?= $berechnung ?>%'><?= $berechnung ?>%
+                </div>
+            </div>
+        </td>
+        <?php
+    }
+    ?>
+    <p style="background:rgba(110,110,124,0.43); max-width:80%;max-height:5rem;min-height:5rem;padding-left:40%;cursor:pointer;"
+       onclick="location.href='add.php?add=project'" title="AddCreate Project">Add Project</p>
+    <?php
+    echo "</tr>";
+} catch (Exception $e) {
+    echo "<h1 class='errorbar'>" . $e->getMessage() . "</h1>";
+}
