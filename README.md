@@ -1,3 +1,4 @@
+# [WARNING THIS PROJECT REACHED HIS EOL!]
 # Project Manager
 ## Whats that?
 This is a project manager programmed in PHP. I programmed this for the AusbildungsFit Doit in Vienna but I also want to share it with the public to work better on it.
